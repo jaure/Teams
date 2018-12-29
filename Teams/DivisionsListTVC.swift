@@ -41,6 +41,23 @@ class DivisionsListTVC: UITableViewController {
         
         return cell
     }
+    
+    
+    
+    // MARK: - TableView delegate
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        print("Row tapped: \(indexPath.row)")
+        print("Item selected: \(itemArray[indexPath.row])")
+        
+        // Set a checkmark when tapped and set to none if it already has a checkmark
+        if tableView.cellForRow(at: indexPath)?.accessoryType == .checkmark {
+            tableView.cellForRow(at: indexPath)?.accessoryType = .none
+        } else {
+            tableView.cellForRow(at: indexPath)?.accessoryType = .checkmark
+        }
+        
+        tableView.deselectRow(at: indexPath, animated: true)
+    }
 
 } // end class
 
